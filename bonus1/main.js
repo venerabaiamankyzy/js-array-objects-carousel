@@ -60,11 +60,11 @@ const sliderEL = document.getElementById("slider");
 const thumbEl = document.querySelector(".thumbnails");
 for (let i = 0; i < images.length; i++) {
   sliderEL.innerHTML += `    
-  <figure class="item text-center">
+  <figure class="item">
     <img class= "image" src="../${images[i].image}" alt="poto"></img>
     <figcaption>
       <h2 class="title">${images[i].title}</h2>
-      <h3 class="text">${images[i].text}</h3>
+      <p class="text">${images[i].text}</p>
     </figcaption> 
 
   </figure>  `;
