@@ -57,15 +57,21 @@ const images = [
 // console.log(images[1].image);
 
 const sliderEL = document.getElementById("slider");
+const thumbEl = document.querySelector(".thumbnails");
 for (let i = 0; i < images.length; i++) {
   sliderEL.innerHTML += `    
   <figure class="item text-center">
-    <img class= "image" src="${images[i].image}" alt="poto"></img>
+    <img class= "image" src="../${images[i].image}" alt="poto"></img>
     <figcaption>
       <h2 class="title">${images[i].title}</h2>
       <h3 class="text">${images[i].text}</h3>
     </figcaption> 
-  </figure> `;
+
+  </figure>  `;
+
+  thumbEl.innerHTML += `<div class="thumb">
+    <img class = "immaginiThumb shadow" src="../${images[i].image}"> </img>
+  </div>`;
 }
 console.log(sliderEL);
 
@@ -105,4 +111,45 @@ buttonNextEl.addEventListener("click", function () {
     slideCorrente = 0;
   }
   allItems[slideCorrente].classList.add("active");
+});
+
+/****************************
+ *         Thumbnails        *
+ ****************************/
+const allthumbnails = document.querySelectorAll(".thumb");
+console.log(allthumbnails);
+
+let thumbnailsCorrente = 0;
+
+allthumbnails[0].classList.add("no-shodow");
+
+/******************************
+ *   Thumbnails prev button    *
+ *******************************/
+
+buttonPrevEl.addEventListener("click", function () {
+  allthumbnails[thumbnailsCorrente].classList.remove("no-shodow");
+
+  thumbnailsCorrente--;
+
+  if (thumbnailsCorrente < 0) {
+    thumbnailsCorrente = allthumbnails.length - 1;
+  }
+  console.log(thumbnailsCorrente);
+
+  allthumbnails[thumbnailsCorrente].classList.add("no-shodow");
+});
+
+/******************************
+ *   Thumbnails next button   *
+ *******************************/
+buttonNextEl.addEventListener("click", function () {
+  allthumbnails[thumbnailsCorrente].classList.remove("no-shodow");
+
+  thumbnailsCorrente++;
+
+  if (thumbnailsCorrente >= allthumbnails.length) {
+    thumbnailsCorrente = 0;
+  }
+  allthumbnails[thumbnailsCorrente].classList.add("no-shodow");
 });
